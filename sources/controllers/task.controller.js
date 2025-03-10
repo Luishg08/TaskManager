@@ -4,6 +4,7 @@ import { pool } from '../connections/db.js'
 export const getTasks = async (req, res) => {
     try {
         const {rows} = await pool.query('SELECT * FROM tasks where hidden = false')
+        res.setHeader("Content-Type", "application/json");
         res.json(rows)
     } catch (error) {
         res.status(500).json({message: 'Internal server error'})

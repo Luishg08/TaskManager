@@ -3,9 +3,11 @@ import {PORT} from "./config/config.js";
 import taskRoutes from "./routes/tasks.routes.js";
 import morgan from 'morgan';
 import 'dotenv/config';
+import cors from 'cors'
 
 const app = express(); 
 
+app.use(cors()); 
 app.use(morgan('dev'));
 app.use (express.json()); 
 app.use(taskRoutes);
